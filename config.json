@@ -1,0 +1,34 @@
+[
+  {
+    "emoji": "🅱️",
+    "roleId": "738466795341479997",
+    "guildId": "258167954913361930",
+    "channelIds": [
+      "258167954913361930",
+      "264627745177206786",
+      "419681885166239744",
+      "747319121582096434",
+      "755818716641624104",
+      "266041562033553408",
+      "765411104372817990",
+      "778290367980240896",
+      "755136985856737321"
+    ],
+    "maxRoleUsers": 3,
+    "openText": "React to claim {role}!",
+    "claimCloseText": "{users} claimed {role}!",
+    "noClaimCloseText": "No one claimed {role}...",
+    "role": {
+      "duration": 3000,
+      "randomDuration": 1200
+    },
+    "messageOpen": {
+      "duration": 600,
+      "randomDuration": 0
+    },
+    "messageClose": {
+      "duration": 300,
+      "randomDuration": 0
+    }
+  }
+]
