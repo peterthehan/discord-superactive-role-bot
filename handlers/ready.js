@@ -1,5 +1,5 @@
 const rules = require("../config");
-const SuperActiveRoleManager = require("../classes/SuperActiveRoleManager");
+const LoopManager = require("../classes/LoopManager");
 const getDuration = require("../util/getDuration");
 
 const loop = async (manager) => {
@@ -15,9 +15,10 @@ module.exports = async (client) => {
   client.superActiveRoleRules = {};
   for (const rule of rules) {
     client.superActiveRoleRules[rule.guildId] = rule;
+
     const guild = client.guilds.resolve(rule.guildId);
-    const messageReaction = { message: { guild }, client };
-    const manager = new SuperActiveRoleManager(messageReaction);
+    const manager = new LoopManager(guild);
+
     loop(manager);
 
     setInterval(() => loop(manager), getDuration(manager.rule.role));

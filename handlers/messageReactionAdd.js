@@ -1,15 +1,17 @@
+const LoopManager = require("../classes/LoopManager");
 const SuperActiveRoleManager = require("../classes/SuperActiveRoleManager");
 
 module.exports = async (messageReaction, user) => {
-  const manager = new SuperActiveRoleManager(messageReaction);
-  if (!manager.isValidMessageReactionAdd(messageReaction.emoji, user)) {
+  const { guild } = messageReaction.message;
+  const manager = new SuperActiveRoleManager(guild, user);
+
+  if (!manager.isValidMessageReactionAdd(messageReaction.emoji)) {
     return;
   }
 
-  await manager.addRole(user);
-  if (manager.isNotFull()) {
-    return;
-  }
+  await manager.addRole();
 
-  manager.closeRole();
+  if (manager.isFull()) {
+    await new LoopManager(guild).closeRole();
+  }
 };
