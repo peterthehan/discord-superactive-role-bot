@@ -12,7 +12,7 @@ A Discord bot that randomly spawns a self-assignable, temporary role on a timer.
 
 2. Download this widget and move the `src-discord-superactive-role-bot` folder into the [src/widgets/](https://github.com/peterthehan/create-discord-bot/tree/master/app/src/widgets) folder created in step 1.
 
-3. Open [config.json](https://github.com/peterthehan/discord-superactive-role-bot/blob/master/config.json) to configure your own settings:
+3. Open [config.json](https://github.com/peterthehan/discord-superactive-role-bot/blob/master/src-discord-superactive-role-bot/config.json) to configure your own settings:
 
    ```json
    [
