@@ -1,12 +1,19 @@
 const rules = require("../config");
 const LoopManager = require("../classes/LoopManager");
-const getDuration = require("../util/getDuration");
+const getRandomInt = require("../util/getRandomInt");
+const setRandomInterval = require("../util/setRandomInterval");
 
 const loop = async (manager) => {
   await manager.removeRoleFromAllMembers();
   await manager.openRole();
 
-  setTimeout(() => manager.closeRole(), getDuration(manager.rule.messageOpen));
+  setTimeout(
+    () => manager.closeRole(),
+    getRandomInt(
+      manager.rule.messageOpen.minDuration,
+      manager.rule.messageOpen.maxDuration
+    )
+  );
 };
 
 module.exports = async (client) => {
@@ -21,6 +28,10 @@ module.exports = async (client) => {
 
     loop(manager);
 
-    setInterval(() => loop(manager), getDuration(manager.rule.role));
+    setRandomInterval(
+      () => loop(manager),
+      rule.role.minDuration,
+      rule.role.maxDuration
+    );
   }
 };

@@ -1,5 +1,4 @@
 const getCache = require("../util/getCache");
-const getDuration = require("../util/getDuration");
 const getRandomInt = require("../util/getRandomInt");
 
 const cache = getCache();
@@ -49,7 +48,13 @@ module.exports = class LoopManager {
     await message.edit(closeText);
 
     if ("messageClose" in this.rule) {
-      setTimeout(() => message.delete(), getDuration(this.rule.messageClose));
+      setTimeout(
+        () => message.delete(),
+        getRandomInt(
+          this.rule.messageClose.minDuration,
+          this.rule.messageClose.maxDuration
+        )
+      );
     }
   }
 

@@ -20,16 +20,16 @@
     "claimCloseText": "{users} claimed {role}!",
     "noClaimCloseText": "No one claimed {role}...",
     "role": {
-      "duration": 3000,
-      "randomDuration": 1200
+      "minDuration": 3000000,
+      "maxDuration": 4200000
     },
     "messageOpen": {
-      "duration": 600,
-      "randomDuration": 0
+      "minDuration": 600,
+      "maxDuration": 600
     },
     "messageClose": {
-      "duration": 300,
-      "randomDuration": 0
+      "minDuration": 300,
+      "maxDuration": 300
     }
   }
 ]

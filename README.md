@@ -37,16 +37,16 @@ A Discord bot that randomly spawns a self-assignable, temporary role on a timer.
        "claimCloseText": "{users} claimed {role}!",
        "noClaimCloseText": "No one claimed {role}...",
        "role": {
-         "duration": 3000,
-         "randomDuration": 1200
+         "minDuration": 3000000,
+         "maxDuration": 4200000
        },
        "messageOpen": {
-         "duration": 600,
-         "randomDuration": 0
+         "minDuration": 600,
+         "maxDuration": 600
        },
        "messageClose": {
-         "duration": 300,
-         "randomDuration": 0
+         "minDuration": 300,
+         "maxDuration": 300
        }
      }
    ]
@@ -69,7 +69,7 @@ A Discord bot that randomly spawns a self-assignable, temporary role on a timer.
        ```
 
    - `roleId` is the role assigned to the user after reacting.
-   - `guildId` is the server to enable this bot for.
+   - `guildId` is your server id.
    - `channelIds` is the list of channels the bot will randomly choose from when sending the `openText` message.
    - `maxRoleUsers` is the maximum number of users that are allowed to claim the role.
    - `openText` is the message the bot sends to poll for user reactions.
@@ -81,7 +81,7 @@ A Discord bot that randomly spawns a self-assignable, temporary role on a timer.
    - `role` durations specify how long the role can be claimed for before the bot unassigns it and polls again.
    - `messageOpen` durations specify how long the bot will poll for user reactions before closing the message.
    - `messageClose` durations specify how long the bot will keep the close message up before deleting the message. Exclude this field altogether from the configuration to keep the close message instead of deleting it.
-     - `role`, `messageOpen`, `messageClose` require `duration` and `randomDuration` in seconds.
+     - `role`, `messageOpen`, `messageClose` require `minDuration` and `maxDuration` in milliseconds.
 
 4. `npm start` to run the bot.
 
