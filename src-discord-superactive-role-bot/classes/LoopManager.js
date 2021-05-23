@@ -1,7 +1,8 @@
+const getCache = require("../util/getCache");
 const getDuration = require("../util/getDuration");
 const getRandomInt = require("../util/getRandomInt");
 
-const cache = {};
+const cache = getCache();
 
 module.exports = class LoopManager {
   constructor(guild) {
@@ -25,7 +26,7 @@ module.exports = class LoopManager {
 
     await message.react(this.rule.emoji);
 
-    cache[this.guild.id] = message;
+    cache[this.guild.id] = { message, userIds: new Set() };
   }
 
   async closeRole() {
@@ -33,7 +34,7 @@ module.exports = class LoopManager {
       return;
     }
 
-    const message = cache[this.guild.id];
+    const { message } = cache[this.guild.id];
     delete cache[this.guild.id];
 
     await message.reactions.removeAll();

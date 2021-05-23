@@ -1,29 +1,37 @@
+const getCache = require("../util/getCache");
+
+const cache = getCache();
+
 module.exports = class SuperActiveRoleManager {
-  constructor(guild, user) {
-    this.guild = guild;
-    this.rule = guild.client.superActiveRoleRules[guild.id];
-    this.member = guild.members.resolve(user);
+  constructor(messageReaction, user) {
+    this.messageReaction = messageReaction;
+    this.user = user;
+    this.guild = messageReaction.message.guild;
+    this.rule = user.client.superActiveRoleRules[this.guild.id];
   }
 
-  isFull() {
+  isNotFull() {
     return (
-      this.guild.roles.resolve(this.rule.roleId).members.size >=
-      this.rule.maxRoleUsers
+      this.guild.id in cache &&
+      cache[this.guild.id].userIds.size < this.rule.maxRoleUsers
     );
   }
 
-  isValidMessageReactionAdd(emoji) {
+  isValidMessageReactionAdd() {
     return (
-      emoji &&
-      !this.member.user.bot &&
-      !this.member.user.system &&
-      this.rule.emoji === (emoji.id || emoji.name) &&
-      !this.member.roles.cache.has(this.rule.roleId) &&
-      !this.isFull()
+      !this.user.bot &&
+      !this.user.system &&
+      this.isNotFull() &&
+      !cache[this.guild.id].userIds.has(this.user.id) &&
+      cache[this.guild.id].message.id === this.messageReaction.message.id &&
+      this.rule.emoji ===
+        (this.messageReaction.emoji.id || this.messageReaction.emoji.name)
     );
   }
 
   async addRole() {
-    await this.member.roles.add(this.rule.roleId);
+    cache[this.guild.id].userIds.add(this.user.id);
+    const member = this.guild.members.resolve(this.user);
+    await member.roles.add(this.rule.roleId);
   }
 };
