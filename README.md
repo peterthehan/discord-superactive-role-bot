@@ -41,12 +41,12 @@ A Discord bot that randomly spawns a self-assignable, temporary role on a timer.
          "maxDuration": 4200000
        },
        "messageOpen": {
-         "minDuration": 600,
-         "maxDuration": 600
+         "minDuration": 600000,
+         "maxDuration": 600000
        },
        "messageClose": {
-         "minDuration": 300,
-         "maxDuration": 300
+         "minDuration": 300000,
+         "maxDuration": 300000
        }
      }
    ]
