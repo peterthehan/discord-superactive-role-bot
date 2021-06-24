@@ -33,17 +33,16 @@ module.exports = class LoopManager {
       return;
     }
 
-    const { message } = cache[this.guild.id];
+    const { message, userIds } = cache[this.guild.id];
     delete cache[this.guild.id];
 
     await message.reactions.removeAll();
 
-    const { members } = await this.guild.roles.fetch(this.rule.roleId);
     const closeText = this._formatText(
-      members.size === 0
+      userIds.size === 0
         ? this.rule.noClaimCloseText
         : this.rule.claimCloseText,
-      members.map((member) => member.toString())
+      [...userIds].map((userId) => `<@${userId}>`)
     );
     await message.edit(closeText);
 
