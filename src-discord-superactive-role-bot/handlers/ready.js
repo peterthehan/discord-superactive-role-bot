@@ -1,4 +1,4 @@
-const rules = require("../config");
+const rules = require("../config.json");
 const LoopManager = require("../classes/LoopManager");
 const getRandomInt = require("../util/getRandomInt");
 const setRandomInterval = require("../util/setRandomInterval");
@@ -17,7 +17,7 @@ const loop = async (manager) => {
 };
 
 module.exports = async (client) => {
-  console.log("superActiveRole: ready");
+  console.log(__dirname.split("\\").slice(-2)[0]);
 
   client.superActiveRoleRules = {};
   for (const rule of rules) {
