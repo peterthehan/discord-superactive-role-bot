@@ -10,9 +10,9 @@ A Discord bot that randomly spawns a self-assignable, temporary role on a timer.
 
    > Don't forget to give your bot the `Manage Roles` permission!
 
-2. Download this widget and move the `src-discord-superactive-role-bot` folder into the [src/widgets/](https://github.com/peterthehan/create-discord-bot/tree/master/app/src/widgets) folder created in step 1.
+2. Download this bot and move the `src-discord-superactive-role-bot` folder into the [/src/bots](https://github.com/peterthehan/create-discord-bot/tree/master/src/bots) folder from step 1.
 
-3. Open [config.json](https://github.com/peterthehan/discord-superactive-role-bot/blob/master/src-discord-superactive-role-bot/config.json) to configure your own settings:
+3. Open [config.json](./src-discord-superactive-role-bot/config.json) to configure your own settings:
 
    ```json
    [
@@ -69,7 +69,7 @@ A Discord bot that randomly spawns a self-assignable, temporary role on a timer.
        ```
 
    - `roleId` is the role assigned to the user after reacting.
-   - `guildId` is your server id.
+   - `guildId` is the server id.
    - `channelIds` is the list of channels the bot will randomly choose from when sending the `openText` message.
    - `maxRoleUsers` is the maximum number of users that are allowed to claim the role.
    - `openText` is the message the bot sends to poll for user reactions.
@@ -88,5 +88,5 @@ A Discord bot that randomly spawns a self-assignable, temporary role on a timer.
 Visit for more help or information!
 
 <a href="https://discord.gg/WjEFnzC">
-  <img src="https://discordapp.com/api/guilds/258167954913361930/embed.png?style=banner2" title="Discord Server"/>
+  <img src="https://discord.com/api/guilds/258167954913361930/embed.png?style=banner2" title="Discord Server"/>
 </a>
